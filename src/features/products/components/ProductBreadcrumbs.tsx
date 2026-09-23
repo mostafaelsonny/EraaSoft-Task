@@ -1,0 +1,59 @@
+import Link from "next/link";
+import { productPaths } from "@/features/products/paths";
+
+type ProductBreadcrumbsProps = {
+  productName?: string;
+};
+
+export function ProductBreadcrumbs({ productName }: ProductBreadcrumbsProps) {
+  return (
+    <nav
+      aria-label="Breadcrumb"
+      className="flex flex-wrap items-center gap-2 px-4 py-6 sm:px-6 md:px-10 lg:px-20"
+    >
+      <span className="flex items-center gap-2">
+        <Link
+          href={productPaths.list}
+          className="text-[12px] font-normal whitespace-nowrap text-[#605a54] hover:text-[#1a1a1a]"
+        >
+          Home
+        </Link>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/icons/chevron-right.svg" alt="" width={10} height={10} />
+      </span>
+
+      <span className="flex items-center gap-2">
+        <Link
+          href={productPaths.list}
+          className="text-[12px] font-normal whitespace-nowrap text-[#605a54] hover:text-[#1a1a1a]"
+        >
+          Shop
+        </Link>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/icons/chevron-right.svg" alt="" width={10} height={10} />
+      </span>
+
+      {productName ? (
+        <>
+          <span className="flex items-center gap-2">
+            <Link
+              href={productPaths.list}
+              className="text-[12px] font-normal whitespace-nowrap text-[#605a54] hover:text-[#1a1a1a]"
+            >
+              Fragrances
+            </Link>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/icons/chevron-right.svg" alt="" width={10} height={10} />
+          </span>
+          <span className="text-[12px] font-semibold whitespace-nowrap text-[#1a1a1a]">
+            {productName}
+          </span>
+        </>
+      ) : (
+        <span className="text-[12px] font-semibold whitespace-nowrap text-[#1a1a1a]">
+          All Fragrances
+        </span>
+      )}
+    </nav>
+  );
+}
